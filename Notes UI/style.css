@@ -135,7 +135,7 @@ body {
 }
 
 .event {
-    background-color: #ff0000;
+    background-color: #ff9900;
     padding: 30px;
     width: 25%;
     overflow: hidden;
@@ -164,7 +164,7 @@ body {
     background-color: green !important;
 }
 .btn-Add-E {
-    background-color: orangered !important;
+    background-color: rgb(255, 136, 0) !important;
 }
 
 /* Dodano regułę dla responsywności */

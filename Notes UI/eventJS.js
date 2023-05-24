@@ -157,5 +157,30 @@ deleteEventButton.addEventListener('click', function () {
   }
 });
 
+// Dodaj nasłuchiwacz zdarzeń dla przycisku "Zapisz"
+saveEventButton.addEventListener('click', function () {
+  if (selectedEventId) {
+    // Tutaj dodaj kod obsługujący zapisanie wydarzenia
+    saveEvent();
+  }
+});
+
+// Funkcja obsługująca zapisanie wydarzenia
+function saveEvent() {
+  // Tutaj dodaj kod odpowiedzialny za zapisanie wydarzenia
+  clearEventForm();
+  getAllEvents();
+}
+
+// Funkcja obsługująca kliknięcie w event
+function handleEventClick() {
+  // Tutaj dodaj kod obsługujący kliknięcie w event
+  saveEventButton.classList.remove('hidden');
+  deleteEventButton.classList.remove('hidden');
+}
+
+// Dodaj nasłuchiwacz zdarzeń dla kliknięcia w event
+eventsContainer.addEventListener('click', handleEventClick);
+
 // Inicjalizacja - pobranie wszystkich wydarzeń
 getAllEvents();
