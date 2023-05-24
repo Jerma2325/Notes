@@ -100,8 +100,9 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end; /* Zmieniono na prawą stronę */
-    order: 1; /* Zmieniono kolejność - drugi element */
+    justify-content: flex-end; 
+    order: 1; 
+    float: left;
 }
 
 .notes__container {
@@ -111,7 +112,7 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end; /* Zmieniono na prawą stronę */
+    justify-content: flex-end; 
 }
 
 .note {
@@ -145,7 +146,15 @@ body {
 .event h3 {
     margin-bottom: 10px;
 }
-
+.napisy p {
+    font-size: 24px; 
+    margin: 10px; 
+    font-family: Arial, sans-serif; 
+    font-weight: bold; 
+    color: #333; 
+    text-transform: uppercase; 
+  }
+  
 .event p {
     max-height: 200px;
     overflow: auto;
