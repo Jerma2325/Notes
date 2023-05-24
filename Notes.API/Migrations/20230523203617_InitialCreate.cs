@@ -11,6 +11,7 @@ namespace Notes.API.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+           
             migrationBuilder.CreateTable(
                 name: "Event111s",
                 columns: table => new
