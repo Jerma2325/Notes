@@ -31,7 +31,7 @@ body {
     border-right: 2px solid #ccc;
     padding: 50px;
     float: left;
-    order: -1; /* Zmieniono kolejność - pierwszy element */
+    order: -1; 
 }
 
 .events__sidebar input {
@@ -176,7 +176,6 @@ body {
     background-color: rgb(255, 136, 0) !important;
 }
 
-/* Dodano regułę dla responsywności */
 
 @media (max-width: 768px) {
     .container {

@@ -12,6 +12,7 @@
     <div class="slidebar">
 
         <div class="events__sidebar">
+            <div><button id="loginButton">Zaloguj</button></div>
             <p>Event</p>
             <input type="text" id="title-E" placeholder="Add title">
             <textarea id="description-E" placeholder="Add description"></textarea>
@@ -45,7 +46,13 @@
 
 </div>
 
-    <script src="noteJS.js"></script>
-    <script src="eventJS.js"></script>
+<script src="noteJS.js"></script>
+<script src="eventJS.js"></script>
+<script src="zaloguj.js"></script>
+<script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+        window.location.href = 'login.html';
+    });
+</script>
 </body>
 </html>

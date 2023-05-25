@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz logowania</title>
+    <script src="zaloguj.js"></script>
+</head>
+<body>
+    <h1>Formularz logowania</h1>
+    <label for="username">Login:</label>
+    <input type="text" id="username" required><br><br>
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" required><br><br>
+    <button id="loginButton">Zaloguj</button>
+    <button id="cancelButton">Anuluj</button>
+    <button id="registerButton">Zarejestruj</button>
+
+    <script>
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        document.getElementById('registerButton').addEventListener('click', function() {
+            window.location.href = 'register.html';
+        });
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            login(username, password);
+        });
+    </script>
+</body>
+</html>

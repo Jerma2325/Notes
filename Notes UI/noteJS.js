@@ -17,7 +17,7 @@ const addButton = document.querySelector('#btnAdd');
     titleInput.value = note.title;
     descriptionInput.value = note.description;
     deleteButton.classList.remove('hidden');
-    saveButton.classList.remove('hidden'); // Change made here
+    saveButton.classList.remove('hidden'); 
     deleteButton.setAttribute('data-id', note.id);
     saveButton.setAttribute('data-id', note.id);
 }
@@ -72,7 +72,7 @@ function displayNotes(notes){
 
     notesContainer.innerHTML = allNotes;
 
-    // add event listerners
+
     document.querySelectorAll('.note').forEach(note => {
         note.addEventListener('click', function() {
             populateForm(note.dataset.id)
@@ -114,7 +114,7 @@ saveButton.addEventListener('click', function() {
     const id = saveButton.dataset.id;
 
     if (id) {
-        updateNote(id, titleInput.value, descriptionInput.value); // Change made here
+        updateNote(id, titleInput.value, descriptionInput.value); 
     } 
     else {
         addNote(titleInput.value, descriptionInput.value);

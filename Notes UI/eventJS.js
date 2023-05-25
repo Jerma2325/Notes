@@ -9,7 +9,7 @@ const eventsContainer = document.querySelector('#events__container');
 
 let selectedEventId = null;
 
-// Funkcja czyszcząca formularz
+
 function clearEventForm() {
   eventTitleInput.value = '';
   eventDescriptionInput.value = '';
@@ -20,18 +20,18 @@ function clearEventForm() {
   selectedEventId = null;
 }
 
-// Funkcja wyświetlająca wybrane wydarzenie w formularzu
+
 function displayEventInForm(event) {
   eventTitleInput.value = event.title;
   eventDescriptionInput.value = event.description;
-  eventStartDateInput.value = event.startDate;
-  eventEndDateInput.value = event.endDate;
+  eventStartDateInput.value = event.startDate.slice(0, 10);
+  eventEndDateInput.value = event.endDate.slice(0, 10);
   deleteEventButton.classList.remove('hidden');
   saveEventButton.classList.remove('hidden');
   selectedEventId = event.id;
 }
 
-// Funkcja pobierająca wydarzenie po jego identyfikatorze
+
 function getEventById(id) {
   fetch(`https://localhost:7202/api/event111s/${id}`)
     .then(response => response.json())
@@ -39,7 +39,7 @@ function getEventById(id) {
     .catch(error => console.log(error));
 }
 
-// Funkcja pobierająca wszystkie wydarzenia
+
 function getAllEvents() {
   fetch('https://localhost:7202/api/event111s')
     .then(response => response.json())
@@ -47,7 +47,7 @@ function getAllEvents() {
     .catch(error => console.log(error));
 }
 
-// Funkcja renderująca wydarzenia w kontenerze
+
 function displayEvents(events) {
   let allEvents = '';
 
@@ -56,8 +56,8 @@ function displayEvents(events) {
       <div class="event" data-id="${event.id}">
         <h3>${event.title}</h3>
         <p>${event.description}</p>
-        <p><strong>Start Date:</strong> ${event.startDate}</p>
-        <p><strong>End Date:</strong> ${event.endDate}</p>
+        <p><strong>Start Date:</strong> ${event.startDate.slice(0, 10)}</p>
+        <p><strong>End Date:</strong> ${event.endDate.slice(0, 10)}</p>
       </div>
     `;
     allEvents += eventElement;
@@ -65,7 +65,7 @@ function displayEvents(events) {
 
   eventsContainer.innerHTML = allEvents;
 
-  // Dodaj nasłuchiwacze zdarzeń do wszystkich wydarzeń
+
   document.querySelectorAll('.event').forEach(event => {
     event.addEventListener('click', function () {
       const eventId = event.dataset.id;
@@ -74,7 +74,7 @@ function displayEvents(events) {
   });
 }
 
-// Dodaj nasłuchiwacz zdarzeń dla przycisku "Dodaj wydarzenie"
+
 addEventButton.addEventListener('click', function () {
   const title = eventTitleInput.value;
   const description = eventDescriptionInput.value;
@@ -88,7 +88,7 @@ addEventButton.addEventListener('click', function () {
   }
 });
 
-// Funkcja dodająca nowe wydarzenie
+
 function addEvent(title, description, startDate, endDate) {
   const body = {
     title: title,
@@ -113,7 +113,7 @@ function addEvent(title, description, startDate, endDate) {
     .catch(error => console.log(error));
 }
 
-// Funkcja aktualizująca istniejące wydarzenie
+
 function updateEvent(id, title, description, startDate, endDate) {
   const body = {
     title: title,
@@ -138,7 +138,7 @@ function updateEvent(id, title, description, startDate, endDate) {
     .catch(error => console.log(error));
 }
 
-// Funkcja usuwająca wydarzenie
+
 function deleteEvent(id) {
   fetch(`https://localhost:7202/api/event111s/${id}`, {
     method: 'DELETE'
@@ -150,37 +150,38 @@ function deleteEvent(id) {
     .catch(error => console.log(error));
 }
 
-// Dodaj nasłuchiwacz zdarzeń dla przycisku "Usuń wydarzenie"
+
 deleteEventButton.addEventListener('click', function () {
   if (selectedEventId) {
     deleteEvent(selectedEventId);
   }
 });
 
-// Dodaj nasłuchiwacz zdarzeń dla przycisku "Zapisz"
+
 saveEventButton.addEventListener('click', function () {
   if (selectedEventId) {
-    // Tutaj dodaj kod obsługujący zapisanie wydarzenia
     saveEvent();
   }
 });
 
-// Funkcja obsługująca zapisanie wydarzenia
+
 function saveEvent() {
-  // Tutaj dodaj kod odpowiedzialny za zapisanie wydarzenia
-  clearEventForm();
-  getAllEvents();
+  const title = eventTitleInput.value;
+  const description = eventDescriptionInput.value;
+  const startDate = eventStartDateInput.value;
+  const endDate = eventEndDateInput.value;
+
+  updateEvent(selectedEventId, title, description, startDate, endDate);
 }
 
-// Funkcja obsługująca kliknięcie w event
+
 function handleEventClick() {
-  // Tutaj dodaj kod obsługujący kliknięcie w event
   saveEventButton.classList.remove('hidden');
   deleteEventButton.classList.remove('hidden');
 }
 
-// Dodaj nasłuchiwacz zdarzeń dla kliknięcia w event
+
 eventsContainer.addEventListener('click', handleEventClick);
 
-// Inicjalizacja - pobranie wszystkich wydarzeń
+
 getAllEvents();
