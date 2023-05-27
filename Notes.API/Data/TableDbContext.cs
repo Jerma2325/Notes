@@ -12,6 +12,7 @@ namespace Notes.API.Data
 
         public DbSet<Event111> Event111s { get; set; }
         public DbSet<Note> Notes { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
     }
 }
 

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <div class="slidebar">
+
+        <div class="events__sidebar">
+            <div><button id="loginButton">Zaloguj</button></div>
+            <p>Event</p>
+            <input type="text" id="title-E" placeholder="Add title">
+            <textarea id="description-E" placeholder="Add description"></textarea>
+            <input type="date" id="dateStart" placeholder="Add start date"> 
+            <input type="date" id="dateEnd" placeholder="Add end date"> 
+            <button id="btnAdd-E" class="btn-Add-E">Add Event</button>
+            <button id="btnSave-E" class="hidden">Save</button>
+            <button id="btnDelete-E" class="btn-Delete hidden">Delete</button>
+
+        </div>
+        <div class="notes__sidebar">
+            <p>Notes</p>
+            <input type="text" id="title" placeholder="Add title">
+
+            <textarea id="description" placeholder="Add description"></textarea>
+            
+            <button id="btnAdd" class="btn-Add-N">Add Note</button>
+            <button id="btnSave" class="hidden">Save</button>
+            <button id="btnDelete" class="btn-Delete hidden">Delete</button>
+
+        </div>
+    </div>
+    <div class="conteiner_view">
+        <div class="napisy"><p>Event</p></div>
+        <div class="events__container" id="events__container">
+        </div>
+        <div class="napisy"><p>Notes</p></div>
+        <div class="notes__container" id="notes__container">
+        </div>
+    </div> 
+
+</div>
+
+<script src="noteJS.js"></script>
+<script src="eventJS.js"></script>
+<script src="zaloguj.js"></script>
+<script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>

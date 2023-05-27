@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using Notes.API.Data;
@@ -40,7 +41,7 @@ namespace Notes.API.Controllers
 
             return Ok(note);
         }
-
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddNote(Note note)
         {

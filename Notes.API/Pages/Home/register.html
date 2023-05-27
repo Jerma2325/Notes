@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularz rejestracji</title>
+    <script src="zaloguj.js"></script>
+</head>
+<body>
+    <h1>Formularz rejestracji</h1>
+    <label for="username">Login:</label>
+    <input type="text" id="username" required><br><br>
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" required><br><br>
+    <label for="confirmPassword">Potwierdź hasło:</label>
+    <input type="password" id="confirmPassword" required><br><br>
+    <button id="registerButton">Zarejestruj</button>
+    <button id="cancelButton">Anuluj</button>
+
+    <script>
+        document.getElementById('cancelButton').addEventListener('click', function() {
+            window.location.href = 'login.html';
+        });
+
+        document.getElementById('registerButton').addEventListener('click', function() {
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+
+            register(username, password, confirmPassword);
+        });
+    </script>
+</body>
+</html>

@@ -7,6 +7,7 @@ using Notes.API.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Notes.API.Controllers
 {
@@ -71,7 +72,8 @@ namespace Notes.API.Controllers
 
             return Ok(existingEvent);
         }
-
+        
+        [Authorize]
         [HttpDelete("{id:Guid}")]
         public async Task<IActionResult> DeleteEvent(Guid id)
         {
