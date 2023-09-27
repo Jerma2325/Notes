@@ -4,10 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using Notes.API.Data;
 using Notes.API.Models.Entities;
 
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 namespace Notes.API.Controllers
 {
     [ApiController]
@@ -45,8 +41,8 @@ namespace Notes.API.Controllers
         public async Task<IActionResult> AddEvent(Event111 event111)
         {
             event111.Id = Guid.NewGuid();
-            await _tableDbContext.Event111s.AddAsync(event111);
-            await _tableDbContext.SaveChangesAsync();
+            _ = await _tableDbContext.Event111s.AddAsync(event111);
+            _ = await _tableDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetEventById), new { id = event111.Id }, event111);
         }
@@ -67,7 +63,7 @@ namespace Notes.API.Controllers
             existingEvent.EndDate = updatedEvent.EndDate;
             existingEvent.IsVisable = updatedEvent.IsVisable;
 
-            await _tableDbContext.SaveChangesAsync();
+            _ = await _tableDbContext.SaveChangesAsync();
 
             return Ok(existingEvent);
         }
@@ -82,9 +78,9 @@ namespace Notes.API.Controllers
                 return NotFound();
             }
 
-            _tableDbContext.Event111s.Remove(existingEvent);
+            _ = _tableDbContext.Event111s.Remove(existingEvent);
 
-            await _tableDbContext.SaveChangesAsync();
+            _ = await _tableDbContext.SaveChangesAsync();
 
             return Ok();
         }

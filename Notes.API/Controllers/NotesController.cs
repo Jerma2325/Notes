@@ -45,8 +45,8 @@ namespace Notes.API.Controllers
         public async Task<IActionResult> AddNote(Note note)
         {
             note.Id = Guid.NewGuid();
-            await TableDbContext.Notes.AddAsync(note);
-            await TableDbContext.SaveChangesAsync();
+            _ = await TableDbContext.Notes.AddAsync(note);
+            _ = await TableDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetNoteById), new { id = note.Id }, note);
         }
@@ -66,7 +66,7 @@ namespace Notes.API.Controllers
             existingNote.Description = updatedNote.Description;
             existingNote.IsVisable = updatedNote.IsVisable;
 
-            await TableDbContext.SaveChangesAsync();
+            _ = await TableDbContext.SaveChangesAsync();
 
             return Ok(existingNote);
         }
@@ -82,9 +82,9 @@ namespace Notes.API.Controllers
                 return NotFound();
             }
 
-            TableDbContext.Notes.Remove(existingNote);
+            _ = TableDbContext.Notes.Remove(existingNote);
 
-            await TableDbContext.SaveChangesAsync();
+            _ = await TableDbContext.SaveChangesAsync();
 
             return Ok();
         }

@@ -1,19 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 using Notes.API.Data;
 using Notes.API.Dto;
 using Notes.API.Models.Entities;
 
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Threading.Tasks;
 
 namespace Notes.API.Controllers
 {
@@ -42,8 +37,8 @@ namespace Notes.API.Controllers
                 PasswordSalt = passwordSalt
             };
 
-            _dbContext.Users.Add(user);
-            await _dbContext.SaveChangesAsync();
+            _ = _dbContext.Users.Add(user);
+            _ = await _dbContext.SaveChangesAsync();
 
             return Ok(user);
         }
